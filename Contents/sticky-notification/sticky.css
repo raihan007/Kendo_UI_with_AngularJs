@@ -1,0 +1,203 @@
+div.sticky-queue {
+    position: fixed;
+    background: #fff;
+    background: rgba(255,255,255,.9);
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    /*border-color: transparent;*/
+    border-color: #c5c5c5;
+    width: 350px;
+    z-index: 3000;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.176);           
+}
+
+    div.sticky-queue.bottom-right, div.sticky-queue.bottom-left, div.sticky-queue.bottom-center {
+    border-width: 2px 2px 0 2px;
+    border-style: solid; /*border-color: transparent;*/
+    border-color: #c5c5c5;
+    box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.176);
+}
+
+div.sticky-note {
+    padding-right: 20px;
+    padding-left: 0px;
+    font-weight: normal;
+}
+
+div.sticky {
+    font-size: 12px;
+    color: #555;
+    display: none;
+    position: relative;
+    padding: 10px;
+    background: white;
+    animation: lighlights 2s;
+    -webkit-animation: lighlights 2s; /* Safari and Chrome */
+}
+
+@keyframes lighlights {
+    0% {
+        background: white;
+    }
+
+    25% {
+        background: #FFFFCC;
+    }
+
+    50% {
+        background: #FFFF99;
+    }
+
+    75% {
+        background: #FFFFCC;
+    }
+
+    100% {
+        background: white;
+    }
+}
+
+@-webkit-keyframes lighlights /* Safari and Chrome */
+{
+    0% {
+        background: white;
+    }
+
+    25% {
+        background: #FFFFCC;
+    }
+
+    50% {
+        background: #FFFF99;
+    }
+
+    75% {
+        background: #FFFFCC;
+    }
+
+    100% {
+        background: white;
+    }
+}
+
+div.sticky p {
+    margin-bottom: 0;
+}
+
+.st-time {
+    font-size: 10px;
+    color: dimgrey;
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+}
+
+.st-close {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+html[dir="rtl"] .st-time {
+     
+    left: 6px;
+}
+
+html[dir="rtl"] .st-close {
+    left: 6px;
+
+}
+
+.top-right, .top-left, .top-center {
+    top: -2px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+}
+
+.bottom-right, .bottom-left, .bottom-center {
+    bottom: -2px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+
+}
+
+.border-top-right, .border-top-left, .border-top-center {
+    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.border-bottom-right, .border-bottom-left, .border-bottom-center {
+    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.sticky.st-error {
+    color: #C62626;
+    /*background-color: #f2dede;*/
+}
+
+.sticky.st-success {
+    color: #7fae00;
+    /*background-color: #dff0d8;*/
+}
+
+.sticky.st-info {
+    color: #00a6fc;
+    /*background-color: #d9edf7;*/
+}
+
+.sticky.st-warning {
+    color: #ed9c28;
+    /*background-color: #fcf8e3;*/
+}
+
+.top-right, .bottom-right {
+    right: 20px;    top: 0px;
+}
+
+.top-left, .bottom-left {
+    left: 20px;
+}
+
+.top-center {
+    left: 50%;
+    margin-left: -140px;    top: 0px;
+}
+
+.bottom-center {
+    left: 50%;
+    margin-left: -140px;
+}
+
+div.sticky-queue.top-right .sticky:last-child, div.sticky-queue.top-left .sticky:last-child, div.sticky-queue.top-center .sticky:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+}
+
+div.sticky-queue.bottom-right .sticky:first-child, div.sticky-queue.bottom-left .sticky:first-child, div.sticky-queue.bottom-center .sticky:last-child {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-top-left-radius: 3px;
+}
+
+.sticky-highlighted {
+    background: #feffde;
+    font-style: normal;
+}

@@ -1,0 +1,17 @@
+tr
+{
+    padding: 5px;
+    line-height:45px;
+}
+
+th, td {
+    padding: 3px;
+}
+
+.close{
+	color: black;
+}
+
+.close:hover,.close:focus{
+	color: red !important;
+}

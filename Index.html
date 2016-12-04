@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular & Kendo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="Contents/css/bootstrap.min.css">
+    <!--Font Awesome-->
+    <link href="Contents/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="Contents/css/Kendo/kendo.common-material.min.css">
+    <link rel="stylesheet" type="text/css" href="Contents/css/Kendo/kendo.material.min.css">
+    <link rel="stylesheet" type="text/css" href="Contents/css/style.css">
+</head>
+
+<body ng-app="app" class="container-fluid">
+<div class="row" ng-init="Init()" ng-controller="StudentController">
+    <div class="col-md-6 pull-right">
+        <div class="row">
+            <table class="">
+                <tr>
+                    <td style="width: 60px">Search</td>
+                    <td>
+                        <input type="text" ng-model="SearchKey" class="form-control" />
+                    </td>
+                    <td style="width: 80px">
+                        <button type="button" class="btn btn-default" ng-click="SearchCommand()">Search</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="btn-group">
+                <button type="button" ng-click="NewCommand()" class="btn btn-default ">
+                    <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;New
+                </button>
+                <button type="button" ng-click="UpdateCommand()" class="btn btn-default ">
+                    <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Update
+                </button>
+                <button type="button" ng-click="DeleteCommand()" class="btn btn-default ">
+                    <i class="glyphicon glyphicon-edit"></i>&nbsp;Delete
+                </button>
+                <button type="button" ng-click="RefreshCommand()" class="btn btn-default ">
+                    <i class="glyphicon glyphicon-refresh"></i>&nbsp;Refresh
+                </button>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-default " ng-click="SaveCommand($event)">
+                        <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form name="StudentForm" id="StudentForm" kendo-validator="validator" >
+                <table class="formTable">
+                    <tr>
+                        <td style="width: 150px">ID </td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <input kendo-numeric-text-box required name="StudentID" ng-model="Student.EntityNo" k-min="0" style="width: 100%;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="StudentID"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Name </td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <input type="text" class="k-textbox" required name="StudentName" ng-model="Student.Name" placeholder="Student Name" style="width: 100%;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="StudentName"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Email</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <input type="email" id="Email" name="Email" ng-model="Student.Email" class="k-textbox" placeholder="Student Email Adress" required k-value-primitive="true" style="width: 100%;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="Email"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Department</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <select kendo-drop-down-list name="Department" required id="Department" k-options="DepartmentOptions" k-ng-model="Student.Department" k-change="onChange" k-value-primitive="true" style="width: 100%;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="Department"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Test</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <select kendo-drop-down-list name="Test" required id="Test" k-options="TestOptions" k-ng-model="Student.ID" k-data-source="TestDataSource" k-value-primitive="true" style="width: 100%;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="Test"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Date of Birth</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <input name="DateOfBirth" id="DateOfBirth" kendo-date-picker required k-ng-model="Student.DateOfBirth" k-options="DateOfBirthOptions" ng-click="DateOpen('DateOfBirth')" style="width: 100%;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="DateOfBirth"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px">Address</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <textarea rows="3" name="Address" required ng-model="Student.Address" class="k-textbox" style="width: 100%;"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 150px">Experience</td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <select kendo-drop-down-list name="Experience" required id="Experience" k-options="ExperienceOptions" k-ng-model="Student.Experience" k-change="extraPart" k-value-primitive="true" style="width: 100%;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="Experience"></span>
+                        </td>
+                    </tr>
+
+                    <tr ng-show="Student.Experience==1">
+                        <td style="width: 150px">Company Name </td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <input type="text" class="k-textbox" name="CompanyName" id="CompanyName" ng-model="Student.CompanyName" placeholder="Conpany Name" style="width: 100%;" />
+                        </td>
+                    </tr>
+                    <tr ng-show="Student.Experience==1">
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="CompanyName"></span>
+                        </td>
+                    </tr>
+                </table> 
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6" id="testContainer">
+        <kendo-grid id="testgrid" k-options="StudentGridOptions" k-data-source="StudentGridDataSource" k-selectable="'row'" k-on-change="GridRowClick(data, dataItem)"></kendo-grid>
+    </div>
+
+
+
+
+<script src="Contents/js/jquery-1.12.4.min.js"></script>
+<script src="Contents/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Contents/sticky-notification/sticky.css">
+<script type="text/javascript" src="Contents/sticky-notification/sticky.js"></script>
+<!--underscore & lodash-->
+<script src="Contents/js/underscore/underscore.js"></script>
+<script src="Contents/js/lodash/lodash.js"></script>
+<!--underscore & lodash-->
+<script src="Contents/js/angular.js"></script>
+<script src="Contents/js/angular-guid/guid.min.js"></script>
+<script src="Contents/js/Kendo/kendo.all.js"></script>
+<script src="app/app.js"></script>
+<script src="app/common.js"></script>
+<script src="app/controllers/StudentController.js"></script>
+<script type="text/javascript">
+    $("#DateOfBirth").keydown(false);
+</script>
+</body>
+</html>
+

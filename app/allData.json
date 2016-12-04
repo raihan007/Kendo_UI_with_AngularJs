@@ -1,0 +1,22 @@
+{
+	"StudentList":[
+        {"EntityNo":1,"UserId":"d5e52f68-b5be-73ac-4899-75abc32362df", "Name": "A", "Department": 1, "Email":"A@gmail.com", "DateOfBirth":"1992-08-10T12:00:00","Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":2,"UserId":"b6d1f0b3-22e7-9430-6a15-580945a08f3e", "Name": "B", "Department": 1, "Email":"B@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":3,"UserId":"1f8f56ae-3273-0a4a-708a-dbfb8f403113", "Name": "C", "Department": 1, "Email":"C@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":10,"UserId": "55d9be34-a502-0d33-fd1e-b4ae40984e0f", "Name": "D", "Department": 1, "Email":"D@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":4,"UserId": "87f77ee5-74f2-21de-97c3-7fabdadf3742", "Name": "E", "Department": 2, "Email":"E@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":5,"UserId": "3f290732-e726-7e44-0a01-6576b88844c2", "Name": "F", "Department": 2, "Email":"F@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":6,"UserId": "9805a4e1-b201-a8ef-f8a8-47b7ee85a4bf", "Name": "G", "Department": 2, "Email":"G@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":7,"UserId": "60a4f228-fe2b-1f60-de9e-c5c76fed034a", "Name": "H", "Department": 2, "Email":"H@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":8,"UserId": "d8af3969-dd63-c271-ad7f-f80ff83aa459", "Name": "I", "Department": 3, "Email":"I@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":9,"UserId": "452ed930-f5f3-97b7-2b69-694e68fde939", "Name": "J", "Department": 3, "Email":"J@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":10,"UserId": "fd5cb825-0f04-c9b1-2f58-331067023a80", "Name": "K", "Department": 3, "Email":"K@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"1", "CompanyName":"ABC BD", "Address":"fdfgdfgdfgdfgdfg"},
+        {"EntityNo":11,"UserId": "8a72f04f-5c21-d937-2e89-d2427d0096cd", "Name": "L", "Department": 3, "Email":"L@gmail.com", "DateOfBirth":"1992-08-10T12:00:00", "Experience":"0", "CompanyName":"NULL", "Address":"fdfgdfgdfgdfgdfg"}
+    ],
+
+	"DepartmentList":[
+        {"ID":"1", "Name":"CSE"},
+        {"ID":"2", "Name":"EEE"},
+        {"ID":"3", "Name":"BBA"}
+    ]
+}
