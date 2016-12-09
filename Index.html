@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="Contents/css/bootstrap.min.css">
     <!--Font Awesome-->
     <link href="Contents/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="Contents/css/Kendo/kendo.common-material.min.css">
-    <link rel="stylesheet" type="text/css" href="Contents/css/Kendo/kendo.material.min.css">
+    <link rel="stylesheet" type="text/css" href="Contents/Kendo-2016.3.1118/kendo.common-material.min.css">
+    <link rel="stylesheet" type="text/css" href="Contents/Kendo-2016.3.1118/kendo.material.min.css">
+    <link rel="stylesheet" href="Contents/Kendo-2016.3.1118/kendo.material.mobile.min.css" />
     <link rel="stylesheet" type="text/css" href="Contents/css/style.css">
 </head>
 
@@ -30,6 +31,9 @@
         </div>
         <div class="row">
             <div class="btn-group">
+                <button type="button" ng-click="DemoCommand()" class="btn btn-default ">
+                        <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Demo
+                    </button>
                 <button type="button" ng-click="NewCommand()" class="btn btn-default ">
                     <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;New
                 </button>
@@ -53,6 +57,26 @@
             <form name="StudentForm" id="StudentForm" kendo-validator="validator" >
                 <table class="formTable">
                     <tr>
+                        <td style="width: 150px">Multi Select </td>
+                        <td style="width: 10px">:</td>
+                        <td>
+                            <select kendo-multi-select id="MultiSelect" name="MultiSelect" k-options="selectOptions" required k-ng-model="selectedIds" k-value-primitive="true" style="width: 100%;"></select>
+                            <script id="noDataTemplate" type="text/x-kendo-tmpl">
+                                <div>
+                                    No data found. Do you want to add new item - '#: instance.input.val() #' ?
+                                </div>
+                                <br />
+                                <button class="k-button" ng-click="addNew('#: instance.element[0].id #', '#: instance.input.val() #')">Add new item</button>
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span class="k-invalid-msg" data-for="MultiSelect"></span>
+                        </td>
+                    <tr>
                         <td style="width: 150px">ID </td>
                         <td style="width: 10px">:</td>
                         <td>
@@ -65,6 +89,7 @@
                         <td>
                             <span class="k-invalid-msg" data-for="StudentID"></span>
                         </td>
+                    </tr>
                     </tr>
                     <tr>
                         <td style="width: 150px">Name </td>
@@ -184,7 +209,7 @@
 
 
 
-<script src="Contents/js/jquery-1.12.4.min.js"></script>
+<script src="Contents/JQuery 1.12.3/jquery.min.js"></script>
 <script src="Contents/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Contents/sticky-notification/sticky.css">
 <script type="text/javascript" src="Contents/sticky-notification/sticky.js"></script>
@@ -194,7 +219,7 @@
 <!--underscore & lodash-->
 <script src="Contents/js/angular.js"></script>
 <script src="Contents/js/angular-guid/guid.min.js"></script>
-<script src="Contents/js/Kendo/kendo.all.js"></script>
+<script src="Contents/Kendo-2016.3.1118/kendo.all.min.js"></script>
 <script src="app/app.js"></script>
 <script src="app/common.js"></script>
 <script src="app/controllers/StudentController.js"></script>

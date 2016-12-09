@@ -1,0 +1,10 @@
+{
+    "MedicineList":[
+        {"ID":"1", "Name":"CSE"},
+        {"ID":"2", "Name":"EEE"},
+        {"ID":"3", "Name":"BBA"},
+        {"ID":"4", "Name":"CSE"},
+        {"ID":"5", "Name":"EEE"},
+        {"ID":"6", "Name":"BBA"}
+    ]
+}

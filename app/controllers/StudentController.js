@@ -1,5 +1,110 @@
 app.controller('StudentController', ['$scope','$http','$filter','Guid', function($scope,$http,$filter,Guid) {
     $scope.AllData = {};
+    var crudServiceBaseUrl = "//demos.telerik.com/kendo-ui/service";
+    $scope.MedicinList = [
+        {ID:"287faec0-8043-c2e3-e801-d6c9892b6214", Name:"Napa"},
+        {ID:"d4faa6d1-6b09-433b-9448-32b8f70ce072", Name:"HPlus"},
+        {ID:"68ccaecb-df4a-44e9-af30-c3a76146c40c", Name:"Napa Extra"},
+        {ID:"0c9ce154-ff4d-49a8-9ae0-bbdc7be08502", Name:"Duet"},
+        {ID:"b31b42b5-46e0-49bd-bf61-7cdf908091c3", Name:"A"},
+        {ID:"da15910f-f4f1-4486-9122-5147e32f7db2", Name:"B"}
+    ];
+    $scope.MdataSource = new kendo.data.DataSource({
+                batch: true,
+                transport: {
+                    read:  {
+                        url: crudServiceBaseUrl + "/Products",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: crudServiceBaseUrl + "/Products/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function(options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return {models: kendo.stringify(options.models)};
+                        }
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "ProductID",
+                        fields: {
+                            ProductID: { type: "number" },
+                            ProductName: { type: "string" }
+                        }
+                    }
+                }
+    });
+    $scope.MultiSelectDataSource = new kendo.data.DataSource({
+        transport: {
+            read:function(o){
+                o.success($scope.MedicinList);
+            }
+        },
+        schema: {
+            model: {
+                id: "ID",
+                fields: {
+                    ID: { type: "string" },
+                    Name: { type: "string" }
+                }
+            }
+        }
+    });
+
+    $scope.addNew = function(widgetId, value){
+        var widget = $("#" + widgetId).getKendoMultiSelect();
+        var dataSource = widget.dataSource;
+        if (confirm("Are you sure?")) {
+            var mID = Guid.newGuid();
+            dataSource.add({
+                ID: mID,
+                Name: value
+            });
+            dataSource.one("sync", function() {
+                widget.value(widget.value().concat([mID]));
+            });
+            dataSource.sync();
+        }
+    };
+
+
+    $scope.DemoCommand = function(){
+        console.log($scope.selectedIds);
+    };
+
+    /*$scope.MultiSelectDataSource = new kendo.data.DataSource({
+        transport: {
+            read:{
+                url: 'http://localhost/kendo/app/MedicinData.json',
+                dataType: "json"
+            }
+        },
+        schema: {
+            data:"MedicineList",
+            model: {
+                id: "ID",
+                fields: {
+                    ID: { type: "number" },
+                    Name: { type: "string" }
+                }
+            }
+        }
+    });*/
+    $scope.selectedIds = [];
+
+    $scope.selectOptions = {
+        placeholder: "Select products...",
+        dataTextField: "Name",
+        dataValueField: "ID",
+        valuePrimitive: true,
+        autoBind: false,
+        dataSource: $scope.MultiSelectDataSource,
+        noDataTemplate: $("#noDataTemplate").html()
+    };
+
+
     $scope.SearchKey = '';
     $scope.Init = function(){
         $scope.LoadJsonFileData();
