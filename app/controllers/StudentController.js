@@ -53,6 +53,14 @@ app.controller('StudentController', ['$scope','$http','$filter','Guid', function
         }
     });
 
+    $scope.getValue = function(Data,Property,GetProperty,value){
+        var result  = Data.filter(function(o){
+            return o[Property] == value;
+        });
+
+        return result? result[0][GetProperty] : null;
+    }
+
     $scope.addNew = function(widgetId, value){
         var widget = $("#" + widgetId).getKendoMultiSelect();
         var dataSource = widget.dataSource;
@@ -71,7 +79,7 @@ app.controller('StudentController', ['$scope','$http','$filter','Guid', function
 
 
     $scope.DemoCommand = function(){
-        console.log($scope.selectedIds);
+        console.log($scope.getValue($scope.MedicinList,'ID','Name','287faec0-8043-c2e3-e801-d6c9892b6214'));
     };
 
     /*$scope.MultiSelectDataSource = new kendo.data.DataSource({
